@@ -1,0 +1,9 @@
+﻿    @model MondaySoccer.Models.EF.Game
+
+    @using (Ajax.BeginForm("CloseGame", "Game",new { id = Model.GameID }, new AjaxOptions { UpdateTargetId = "closeDiv", HttpMethod = "Post" }))
+    {
+         @Html.ValidationSummary(true)
+     <p>
+            <input type="submit" value="Close Game" />
+        </p>
+    }

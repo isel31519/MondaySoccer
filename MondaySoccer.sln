@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MondaySoccer", "MondaySoccer\MondaySoccer.csproj", "{BF82A0B7-4882-4ADB-B8B8-0D199FA230C3}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DB", "DB\DB.sqlproj", "{DF7DB9D6-5D0F-4042-867A-62AC9EF56C13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF82A0B7-4882-4ADB-B8B8-0D199FA230C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF82A0B7-4882-4ADB-B8B8-0D199FA230C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF82A0B7-4882-4ADB-B8B8-0D199FA230C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF82A0B7-4882-4ADB-B8B8-0D199FA230C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF7DB9D6-5D0F-4042-867A-62AC9EF56C13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF7DB9D6-5D0F-4042-867A-62AC9EF56C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF7DB9D6-5D0F-4042-867A-62AC9EF56C13}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DF7DB9D6-5D0F-4042-867A-62AC9EF56C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF7DB9D6-5D0F-4042-867A-62AC9EF56C13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF7DB9D6-5D0F-4042-867A-62AC9EF56C13}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

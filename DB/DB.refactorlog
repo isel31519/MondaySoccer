@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="d7d94022-f744-43de-848d-0c7678280d6e" ChangeDateTime="01/16/2014 23:54:02">
+    <Property Name="ElementName" Value="[dbo].[Game].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Game]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GameID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b2ee7bde-965a-40bd-b4ba-59fc99227d3b" ChangeDateTime="01/16/2014 23:54:12">
+    <Property Name="ElementName" Value="[dbo].[Equipa].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Equipa]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TeamID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ef7af5b7-8230-4d41-8bce-45e25d3201b0" ChangeDateTime="01/16/2014 23:56:16">
+    <Property Name="ElementName" Value="[dbo].[GameSheet].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GameSheet]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GameSheetID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4e9b2e94-9843-4efd-821c-1351a0a01bcd" ChangeDateTime="01/17/2014 00:10:55">
+    <Property Name="ElementName" Value="[dbo].[Invitation].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Invitation]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="InvitationID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1edddc0a-f721-4b70-98db-65122793d00d" ChangeDateTime="01/17/2014 00:12:32">
+    <Property Name="ElementName" Value="[dbo].[Invitation_Player].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Invitation_Player]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="InvitationPlayerID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1b17a57b-9aab-4d77-974c-eccc088468db" ChangeDateTime="01/17/2014 00:13:26">
+    <Property Name="ElementName" Value="[dbo].[Player].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Player]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PlayerID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="27152984-10b9-43cd-89d7-4df091a9a05e" ChangeDateTime="01/18/2014 01:26:27">
+    <Property Name="ElementName" Value="[dbo].[State].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[State]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StateID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2987ff1b-381d-43bd-a9ec-439b12079f39" ChangeDateTime="01/21/2014 23:07:47">
+    <Property Name="ElementName" Value="[dbo].[Game].[StateID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Game]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StateCod" />
+  </Operation>
+</Operations>

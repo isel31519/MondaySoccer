@@ -1,0 +1,53 @@
+﻿@model MondaySoccer.Models.EF.Game
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Game</legend>
+
+        @Html.HiddenFor(model => model.GameID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GameSheet)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GameSheet)
+            @Html.ValidationMessageFor(model => model.GameSheet)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Invitation, "Invitation1")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Invitation", String.Empty)
+            @Html.ValidationMessageFor(model => model.Invitation)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

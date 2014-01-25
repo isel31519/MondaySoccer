@@ -1,0 +1,111 @@
+﻿@model MondaySoccer.Models.EF.Game
+@using MondaySoccer.Auxiliary
+@{
+    ViewBag.Title = "Game Details";
+      var m=new MondaySoccer.Models.EF.Game_Player();
+}
+
+@{Html.EnableUnobtrusiveJavaScript(true);}
+<h2>Game</h2>
+
+<fieldset>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+
+   @* <div class="display-label">
+         @Html.DisplayNameFor(model => model..State)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.State)
+    </div>*@
+        <table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => m.PlayerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => m.Comments)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (MondaySoccer.Models.EF.Game_Player item in Model.Game_Player)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Player.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "RemovePlayer","Game" ,new {  id=item.InvitationPlayerID },null)
+        </td>
+    </tr>
+}
+
+</table>
+        
+
+</fieldset>
+    @if(Model.StateCod==State.Current){
+
+<h2>Add Player</h2>
+<fieldset>
+@using (Html.BeginForm("AddPlayer", "Game", new { Model.GameID}))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => m.PlayerID)
+        </div>
+        <div class="editor-field">
+             @Html.DropDownList("PlayerID", String.Empty)
+            @Html.ValidationMessageFor(model => m.PlayerID)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => m.Comments)
+        </div>
+        <div class="editor-field">
+            @Html.Editor("Comments")
+            @Html.ValidationMessageFor(model => m.Comments)
+        </div>
+
+        <p>
+            <input type="submit" value="Add Player" />
+        </p>
+    </fieldset>
+
+}
+       </fieldset>
+
+        <fieldset>
+<div id="closeDiv">
+
+@{Html.RenderPartial("_CloseGame", Model);}
+
+    </div>
+                </fieldset>
+}else
+if (Model.StateCod == State.Inicial) {
+    using (Html.BeginForm("StartGame", "Game", new { id=Model.GameID}))
+    {
+         @Html.ValidationSummary(true)
+     <p>
+            <input type="submit" value="Create" />
+        </p>
+    }
+}
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.GameID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

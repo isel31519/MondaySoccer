@@ -1,0 +1,73 @@
+16-01-2014 23:34:51	This log contains information about the import schema operation into project 'DB' on computer 'BERNAS-PC' by user 'Bernas'.
+16-01-2014 23:34:51	Import of database schema has started.
+16-01-2014 23:34:58	Gathering database options
+16-01-2014 23:34:58	Gathering users
+16-01-2014 23:34:58	Gathering roles
+16-01-2014 23:34:58	Gathering application roles
+16-01-2014 23:34:58	Gathering role memberships
+16-01-2014 23:34:58	Gathering filegroups
+16-01-2014 23:34:58	Gathering full-text catalogs
+16-01-2014 23:34:58	Gathering assemblies
+16-01-2014 23:34:58	Gathering certificates
+16-01-2014 23:34:58	Gathering asymmetric keys
+16-01-2014 23:34:58	Gathering symmetric keys
+16-01-2014 23:34:58	Gathering encrypted symmetric keys
+16-01-2014 23:34:58	Gathering schemas
+16-01-2014 23:34:58	Gathering XML schema collections
+16-01-2014 23:34:58	Gathering user-defined data types
+16-01-2014 23:34:58	Gathering user-defined types
+16-01-2014 23:34:58	Gathering table types
+16-01-2014 23:34:58	Gathering unique keys for table types
+16-01-2014 23:34:58	Gathering primary keys for table types
+16-01-2014 23:34:58	Gathering check constraints for table types
+16-01-2014 23:34:58	Gathering default constraints for table types
+16-01-2014 23:34:58	Gathering partition functions
+16-01-2014 23:34:58	Gathering partition schemes
+16-01-2014 23:34:58	Gathering functions
+16-01-2014 23:34:58	Gathering encrypted functions
+16-01-2014 23:34:59	Gathering aggregates
+16-01-2014 23:34:59	Gathering procedures
+16-01-2014 23:34:59	Gathering encrypted procedures
+16-01-2014 23:34:59	Gathering tables
+16-01-2014 23:34:59	Gathering primary keys
+16-01-2014 23:34:59	Gathering unique constraints
+16-01-2014 23:34:59	Gathering foreign keys
+16-01-2014 23:34:59	Gathering default constraints
+16-01-2014 23:34:59	Gathering check constraints
+16-01-2014 23:34:59	Gathering views
+16-01-2014 23:34:59	Gathering encrypted views
+16-01-2014 23:34:59	Gathering indexes
+16-01-2014 23:34:59	Gathering statistics
+16-01-2014 23:34:59	Gathering full-text index stoplists
+16-01-2014 23:34:59	Gathering search property lists
+16-01-2014 23:34:59	Gathering search properties
+16-01-2014 23:34:59	Gathering full-text indexes
+16-01-2014 23:34:59	Gathering column store indexes
+16-01-2014 23:34:59	Gathering spatial indexes
+16-01-2014 23:34:59	Gathering XML indexes
+16-01-2014 23:34:59	Gathering encrypted triggers
+16-01-2014 23:34:59	Gathering triggers
+16-01-2014 23:34:59	Gathering encrypted and clr ddl triggers
+16-01-2014 23:34:59	Gathering ddl triggers
+16-01-2014 23:34:59	Gathering synonyms
+16-01-2014 23:34:59	Gathering defaults
+16-01-2014 23:34:59	Gathering data constraint uddt bindings
+16-01-2014 23:34:59	Gathering rules
+16-01-2014 23:34:59	Gathering data constraint uddt bindings
+16-01-2014 23:34:59	Gathering message types
+16-01-2014 23:34:59	Gathering queues
+16-01-2014 23:34:59	Gathering contracts
+16-01-2014 23:34:59	Gathering services
+16-01-2014 23:34:59	Gathering event notifications
+16-01-2014 23:34:59	Gathering remote service bindings
+16-01-2014 23:34:59	Gathering broker priorities
+16-01-2014 23:34:59	Gathering signatures
+16-01-2014 23:34:59	Gathering data compression options
+16-01-2014 23:34:59	Gathering sequence types
+16-01-2014 23:34:59	Gathering extended properties
+16-01-2014 23:34:59	Gathering credentials
+16-01-2014 23:34:59	Gathering logins
+16-01-2014 23:34:59	Gathering server audits
+16-01-2014 23:35:00	Finished importing database.
+16-01-2014 23:35:00	A summary of the import was saved to the following location: D:\Documentos\Projectos\MondaySoccer\DB\Import Schema Logs\DB_20140116113451.log
+16-01-2014 23:35:00	Click Finish to continue...

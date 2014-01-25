@@ -1,0 +1,47 @@
+﻿@model MondaySoccer.Models.EF.Game
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Game", new { Model.Date,Model.HomeTeam,Model.AwayTeam}))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Game</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayTextFor(model => model.Date)
+        </div>
+          <div class="editor-label">
+            @Html.LabelFor(model => model.HomeTeam)
+        </div>
+        <div class="editor-field">
+             @Html.DropDownListFor(model => model.HomeTeam, (SelectList)ViewBag.Teams,  new { @readonly="readonly",disabled="disabled"})
+        </div>
+          <div class="editor-label">
+            @Html.LabelFor(model => model.AwayTeam)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.AwayTeam, (SelectList)ViewBag.Teams,  new { @readonly="readonly",disabled="disabled"})
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

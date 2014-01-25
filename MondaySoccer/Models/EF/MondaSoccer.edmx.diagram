@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a0bbfec4d87147db9428d60b2f9b89f3" Name="Diagram1">
+        <EntityTypeShape EntityType="MondaySoccerModel.Game" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MondaySoccerModel.Game_Player" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MondaySoccerModel.Player" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MondaySoccerModel.State" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MondaySoccerModel.Team" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="MondaySoccerModel.FK__Game__MVP__690797E6" ManuallyRouted="false" />
+        <AssociationConnector Association="MondaySoccerModel.FK__Game_Play__GameI__6CD828CA" ManuallyRouted="false" />
+        <AssociationConnector Association="MondaySoccerModel.FK_Game_ToTeam2" ManuallyRouted="false" />
+        <AssociationConnector Association="MondaySoccerModel.FK_GameSheet_ToTeam" ManuallyRouted="false" />
+        <AssociationConnector Association="MondaySoccerModel.FK__Game_Play__Playe__6DCC4D03" ManuallyRouted="false" />
+        <AssociationConnector Association="MondaySoccerModel.FK_Player_ToTeam" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
