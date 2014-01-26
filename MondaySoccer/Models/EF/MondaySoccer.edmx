@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MondaySoccerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MondaySoccerModelStoreContainer">
+          <EntitySet Name="Game" EntityType="MondaySoccerModel.Store.Game" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Game_Player" EntityType="MondaySoccerModel.Store.Game_Player" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Player" EntityType="MondaySoccerModel.Store.Player" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="State" EntityType="MondaySoccerModel.Store.State" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Team" EntityType="MondaySoccerModel.Store.Team" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__Game__MVP__1332DBDC" Association="MondaySoccerModel.Store.FK__Game__MVP__1332DBDC">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Game" EntitySet="Game" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Play__GameI__17036CC0" Association="MondaySoccerModel.Store.FK__Game_Play__GameI__17036CC0">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Game_Player" EntitySet="Game_Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Play__Playe__17F790F9" Association="MondaySoccerModel.Store.FK__Game_Play__Playe__17F790F9">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Game_Player" EntitySet="Game_Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Game_ToTeam2" Association="MondaySoccerModel.Store.FK_Game_ToTeam2">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Game" EntitySet="Game" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameSheet_ToTeam" Association="MondaySoccerModel.Store.FK_GameSheet_ToTeam">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Game" EntitySet="Game" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_ToTeam" Association="MondaySoccerModel.Store.FK_Player_ToTeam">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GameID" />
+          </Key>
+          <Property Name="GameID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="HomeTeam" Type="bigint" Nullable="false" />
+          <Property Name="AwayTeam" Type="bigint" Nullable="false" />
+          <Property Name="HomeScore" Type="int" />
+          <Property Name="AwayScore" Type="int" />
+          <Property Name="MVP" Type="bigint" />
+          <Property Name="StateCod" Type="nvarchar" Nullable="false" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Game_Player">
+          <Key>
+            <PropertyRef Name="InvitationPlayerID" />
+          </Key>
+          <Property Name="InvitationPlayerID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GameID" Type="bigint" Nullable="false" />
+          <Property Name="PlayerID" Type="bigint" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="250" />
+          <Property Name="Golos" Type="int" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="IsSubstitute" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="PlayerID" />
+          </Key>
+          <Property Name="PlayerID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Nickname" Type="nvarchar" MaxLength="250" />
+          <Property Name="TeamID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6035: The relationship 'FK__Game__StateCod__14270015' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      -->
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="2" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamID" />
+          </Key>
+          <Property Name="TeamID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Game__MVP__1332DBDC">
+          <End Role="Player" Type="MondaySoccerModel.Store.Player" Multiplicity="0..1" />
+          <End Role="Game" Type="MondaySoccerModel.Store.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerID" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="MVP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Play__GameI__17036CC0">
+          <End Role="Game" Type="MondaySoccerModel.Store.Game" Multiplicity="1" />
+          <End Role="Game_Player" Type="MondaySoccerModel.Store.Game_Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="GameID" />
+            </Principal>
+            <Dependent Role="Game_Player">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Play__Playe__17F790F9">
+          <End Role="Player" Type="MondaySoccerModel.Store.Player" Multiplicity="1" />
+          <End Role="Game_Player" Type="MondaySoccerModel.Store.Game_Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerID" />
+            </Principal>
+            <Dependent Role="Game_Player">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Game_ToTeam2">
+          <End Role="Team" Type="MondaySoccerModel.Store.Team" Multiplicity="1" />
+          <End Role="Game" Type="MondaySoccerModel.Store.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="AwayTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameSheet_ToTeam">
+          <End Role="Team" Type="MondaySoccerModel.Store.Team" Multiplicity="1" />
+          <End Role="Game" Type="MondaySoccerModel.Store.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="HomeTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_ToTeam">
+          <End Role="Team" Type="MondaySoccerModel.Store.Team" Multiplicity="1" />
+          <End Role="Player" Type="MondaySoccerModel.Store.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MondaySoccerModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MondaySoccerEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Game" EntityType="MondaySoccerModel.Game" />
+          <EntitySet Name="Game_Player" EntityType="MondaySoccerModel.Game_Player" />
+          <EntitySet Name="Player" EntityType="MondaySoccerModel.Player" />
+          <EntitySet Name="State" EntityType="MondaySoccerModel.State" />
+          <EntitySet Name="Team" EntityType="MondaySoccerModel.Team" />
+          <AssociationSet Name="FK__Game__MVP__1332DBDC" Association="MondaySoccerModel.FK__Game__MVP__1332DBDC">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Game" EntitySet="Game" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Play__GameI__17036CC0" Association="MondaySoccerModel.FK__Game_Play__GameI__17036CC0">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Game_Player" EntitySet="Game_Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Game_ToTeam2" Association="MondaySoccerModel.FK_Game_ToTeam2">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Game" EntitySet="Game" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameSheet_ToTeam" Association="MondaySoccerModel.FK_GameSheet_ToTeam">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Game" EntitySet="Game" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Game_Play__Playe__17F790F9" Association="MondaySoccerModel.FK__Game_Play__Playe__17F790F9">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Game_Player" EntitySet="Game_Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_ToTeam" Association="MondaySoccerModel.FK_Player_ToTeam">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GameID" />
+          </Key>
+          <Property Name="GameID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HomeTeam" Type="Int64" Nullable="false" />
+          <Property Name="AwayTeam" Type="Int64" Nullable="false" />
+          <Property Name="HomeScore" Type="Int32" />
+          <Property Name="AwayScore" Type="Int32" />
+          <Property Name="MVP" Type="Int64" />
+          <Property Name="StateCod" Type="String" Nullable="false" MaxLength="2" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Player" Relationship="MondaySoccerModel.FK__Game__MVP__1332DBDC" FromRole="Game" ToRole="Player" />
+          <NavigationProperty Name="Game_Player" Relationship="MondaySoccerModel.FK__Game_Play__GameI__17036CC0" FromRole="Game" ToRole="Game_Player" />
+          <NavigationProperty Name="Team" Relationship="MondaySoccerModel.FK_Game_ToTeam2" FromRole="Game" ToRole="Team" />
+          <NavigationProperty Name="Team1" Relationship="MondaySoccerModel.FK_GameSheet_ToTeam" FromRole="Game" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="Game_Player">
+          <Key>
+            <PropertyRef Name="InvitationPlayerID" />
+          </Key>
+          <Property Name="InvitationPlayerID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="GameID" Type="Int64" Nullable="false" />
+          <Property Name="PlayerID" Type="Int64" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Golos" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsSubstitute" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="MondaySoccerModel.FK__Game_Play__GameI__17036CC0" FromRole="Game_Player" ToRole="Game" />
+          <NavigationProperty Name="Player" Relationship="MondaySoccerModel.FK__Game_Play__Playe__17F790F9" FromRole="Game_Player" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="PlayerID" />
+          </Key>
+          <Property Name="PlayerID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Nickname" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="TeamID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="MondaySoccerModel.FK__Game__MVP__1332DBDC" FromRole="Player" ToRole="Game" />
+          <NavigationProperty Name="Game_Player" Relationship="MondaySoccerModel.FK__Game_Play__Playe__17F790F9" FromRole="Player" ToRole="Game_Player" />
+          <NavigationProperty Name="Team" Relationship="MondaySoccerModel.FK_Player_ToTeam" FromRole="Player" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamID" />
+          </Key>
+          <Property Name="TeamID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Game" Relationship="MondaySoccerModel.FK_Game_ToTeam2" FromRole="Team" ToRole="Game" />
+          <NavigationProperty Name="Game1" Relationship="MondaySoccerModel.FK_GameSheet_ToTeam" FromRole="Team" ToRole="Game" />
+          <NavigationProperty Name="Player" Relationship="MondaySoccerModel.FK_Player_ToTeam" FromRole="Team" ToRole="Player" />
+        </EntityType>
+        <Association Name="FK__Game__MVP__1332DBDC">
+          <End Role="Player" Type="MondaySoccerModel.Player" Multiplicity="0..1" />
+          <End Role="Game" Type="MondaySoccerModel.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerID" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="MVP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Play__GameI__17036CC0">
+          <End Role="Game" Type="MondaySoccerModel.Game" Multiplicity="1" />
+          <End Role="Game_Player" Type="MondaySoccerModel.Game_Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="GameID" />
+            </Principal>
+            <Dependent Role="Game_Player">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Game_ToTeam2">
+          <End Role="Team" Type="MondaySoccerModel.Team" Multiplicity="1" />
+          <End Role="Game" Type="MondaySoccerModel.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="AwayTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameSheet_ToTeam">
+          <End Role="Team" Type="MondaySoccerModel.Team" Multiplicity="1" />
+          <End Role="Game" Type="MondaySoccerModel.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="HomeTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Game_Play__Playe__17F790F9">
+          <End Role="Player" Type="MondaySoccerModel.Player" Multiplicity="1" />
+          <End Role="Game_Player" Type="MondaySoccerModel.Game_Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerID" />
+            </Principal>
+            <Dependent Role="Game_Player">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_ToTeam">
+          <End Role="Team" Type="MondaySoccerModel.Team" Multiplicity="1" />
+          <End Role="Player" Type="MondaySoccerModel.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MondaySoccerModelStoreContainer" CdmEntityContainer="MondaySoccerEntities">
+          <EntitySetMapping Name="Game">
+            <EntityTypeMapping TypeName="MondaySoccerModel.Game">
+              <MappingFragment StoreEntitySet="Game">
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="HomeTeam" ColumnName="HomeTeam" />
+                <ScalarProperty Name="AwayTeam" ColumnName="AwayTeam" />
+                <ScalarProperty Name="HomeScore" ColumnName="HomeScore" />
+                <ScalarProperty Name="AwayScore" ColumnName="AwayScore" />
+                <ScalarProperty Name="MVP" ColumnName="MVP" />
+                <ScalarProperty Name="StateCod" ColumnName="StateCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Game_Player">
+            <EntityTypeMapping TypeName="MondaySoccerModel.Game_Player">
+              <MappingFragment StoreEntitySet="Game_Player">
+                <ScalarProperty Name="InvitationPlayerID" ColumnName="InvitationPlayerID" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Golos" ColumnName="Golos" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsSubstitute" ColumnName="IsSubstitute" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player">
+            <EntityTypeMapping TypeName="MondaySoccerModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="State">
+            <EntityTypeMapping TypeName="MondaySoccerModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Team">
+            <EntityTypeMapping TypeName="MondaySoccerModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
